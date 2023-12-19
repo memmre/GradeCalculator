@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grade_calculator/constants/text_styles.dart';
+import 'package:grade_calculator/helpers/lesson_helper.dart';
 
 class GradeAverageField extends StatelessWidget {
   final double gradeAverage;
@@ -19,11 +20,13 @@ class GradeAverageField extends StatelessWidget {
         children: [
           const Text(
             "Your grade average is",
-            style: bodyStyle,
+            style: bodyTextStyle,
           ),
           Text(
             gradeAverage.toStringAsFixed(2),
-            style: gradeAverageStyle,
+            style: LessonHelper.lessons.isEmpty || gradeAverage >= 2
+                ? gradeAverageTextStyle
+                : gradeAverageCriticalTextStyle,
           ),
         ],
       ),

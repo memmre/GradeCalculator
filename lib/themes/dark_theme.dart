@@ -6,7 +6,7 @@ class DarkTheme {
     appBarTheme: const AppBarTheme(color: darkScaffoldColor),
     colorScheme: ColorScheme.fromSeed(
       brightness: Brightness.dark,
-      seedColor: Colors.deepPurple,
+      seedColor: Colors.blue,
     ),
     cardColor: darkBackgroundColor,
     inputDecorationTheme: const InputDecorationTheme(

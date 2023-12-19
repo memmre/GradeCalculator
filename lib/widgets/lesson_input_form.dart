@@ -6,16 +6,19 @@ import 'package:grade_calculator/widgets/custom_dropdown_button.dart';
 import 'package:grade_calculator/widgets/custom_icon_button.dart';
 import 'package:grade_calculator/widgets/custom_text_form_field.dart';
 
-class GradeInputForm extends StatefulWidget {
-  final void Function() onGradeAdded;
+class LessonInputForm extends StatefulWidget {
+  final void Function() onLessonAdded;
 
-  const GradeInputForm({super.key, required this.onGradeAdded});
+  const LessonInputForm({
+    super.key,
+    required this.onLessonAdded,
+  });
 
   @override
-  State<GradeInputForm> createState() => _GradeInputFormState();
+  State<LessonInputForm> createState() => _LessonInputFormState();
 }
 
-class _GradeInputFormState extends State<GradeInputForm> {
+class _LessonInputFormState extends State<LessonInputForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   double _gradePoint = 4.0;
   int _credit = 1;
@@ -28,7 +31,7 @@ class _GradeInputFormState extends State<GradeInputForm> {
       child: Column(
         children: [
           CustomTextFormField(
-            hintText: "Lesson name",
+            hintText: "Please enter a lesson name",
             onSaved: _onLessonNameSaved,
             validator: _lessonNameValidator,
           ),
@@ -95,7 +98,7 @@ class _GradeInputFormState extends State<GradeInputForm> {
         credit: _credit,
       );
       LessonHelper.addLesson(lesson);
-      widget.onGradeAdded();
+      widget.onLessonAdded();
       setState(() {
         _formKey.currentState!.reset();
         _gradePoint = 4.0;

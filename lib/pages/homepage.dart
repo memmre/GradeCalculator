@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:grade_calculator/constants/constant_values.dart';
 import 'package:grade_calculator/helpers/lesson_helper.dart';
 import 'package:grade_calculator/widgets/grade_average_field.dart';
-import 'package:grade_calculator/widgets/grade_input_form.dart';
-import 'package:grade_calculator/widgets/grade_list.dart';
+import 'package:grade_calculator/widgets/lesson_input_form.dart';
+import 'package:grade_calculator/widgets/lesson_list.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -13,7 +13,13 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  double _gradeAverage = 0;
+  late double _gradeAverage;
+
+  @override
+  void initState() {
+    super.initState();
+    _updateGradeAverage();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,20 +40,29 @@ class _HomepageState extends State<Homepage> {
                     gradeAverage: _gradeAverage,
                     padding: const EdgeInsets.only(top: 8),
                   ),
-                  GradeInputForm(onGradeAdded: _updateState),
+                  LessonInputForm(onLessonAdded: _updateGradeAverage),
                 ],
               ),
             ),
           ),
-          GradeList(lessons: LessonHelper.lessons),
+          LessonList(
+            lessons: LessonHelper.lessons,
+            onLessonRemoved: _updateGradeAverage,
+          ),
         ],
       ),
     );
   }
 
-  void _updateState() {
+  void _updateGradeAverage() {
     if (mounted) {
-      setState(() => _gradeAverage = LessonHelper.getGradeAverage());
+      setState(() {
+        if (LessonHelper.lessons.isNotEmpty) {
+          _gradeAverage = LessonHelper.getGradeAverage();
+        } else {
+          _gradeAverage = 0;
+        }
+      });
     }
   }
 }

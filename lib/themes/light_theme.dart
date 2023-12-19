@@ -6,7 +6,7 @@ class LightTheme {
     appBarTheme: const AppBarTheme(color: lightScaffoldColor),
     colorScheme: ColorScheme.fromSeed(
       brightness: Brightness.light,
-      seedColor: Colors.deepPurple,
+      seedColor: Colors.blue,
     ),
     cardColor: lightBackgroundColor,
     inputDecorationTheme: const InputDecorationTheme(

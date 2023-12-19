@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:grade_calculator/models/lesson.dart';
-import 'package:grade_calculator/widgets/grade_list_item.dart';
+import 'package:grade_calculator/widgets/lesson_list_item.dart';
 
-class GradeList extends StatelessWidget {
+class LessonList extends StatelessWidget {
   final List<Lesson> lessons;
+  final void Function() onLessonRemoved;
 
-  const GradeList({
+  const LessonList({
     super.key,
     required this.lessons,
+    required this.onLessonRemoved,
   });
 
   @override
@@ -15,8 +17,9 @@ class GradeList extends StatelessWidget {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (BuildContext context, int index) {
-          return GradeListItem(
+          return LessonListItem(
             lesson: lessons[index],
+            onLessonRemoved: onLessonRemoved,
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
           );
         },

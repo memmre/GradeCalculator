@@ -27,6 +27,7 @@ class CustomTextFormField extends StatelessWidget {
           hintText: hintText,
         ),
         onSaved: onSaved,
+        textAlign: TextAlign.center,
         validator: validator,
       ),
     );

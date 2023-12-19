@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-const TextStyle bodyStyle = TextStyle(fontSize: 16);
+const TextStyle bodyTextStyle = TextStyle(fontSize: 16);
 
-const TextStyle gradeListTitleStyle = TextStyle(
-  fontSize: 16,
+const TextStyle gradeListTitleTextStyle = TextStyle(fontWeight: FontWeight.bold);
+
+const TextStyle gradeAverageTextStyle = TextStyle(
+  fontSize: 64,
   fontWeight: FontWeight.bold,
 );
 
-final TextStyle gradeAverageStyle = GoogleFonts.lato(
+const TextStyle gradeAverageCriticalTextStyle = TextStyle(
+  color: Colors.red,
   fontSize: 64,
   fontWeight: FontWeight.bold,
 );

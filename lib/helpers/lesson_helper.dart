@@ -14,6 +14,5 @@ class LessonHelper {
       totalCredit += lesson.credit;
     }
     return totalPoint / totalCredit;
-     
   }
 }
